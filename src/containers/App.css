@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Spicy Rice';
+  font-style: normal;
+  font-weight: normal;
+  src:
+       local('Spicy Rice'),
+       local('SpicyRice-Regular'),
+       url('SpicyRice-Regular.ttf') format('truetype');
+}
+
+h1 {
+  font-family: 'Spicy Rice';
+  color: white;
+}
