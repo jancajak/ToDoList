@@ -30,20 +30,11 @@ class App extends React.Component {
   }
 
   onTextChange = (event) => {
-    this.setState({addTodo: event.target.value});
+    TodoActions.onTextChange(event.target.value);
   }
 
   addItem = () => {
-    TodoActions.addItem(this.state.addTodo);
-    // let todos = this.state.todos.slice();
-    // const todo = this.state.addTodo;sud
-    //
-    // if (todo) {
-    //   todos.push(todo);
-    //   this.setState({todos: todos});
-    // } else {
-    //   this.setState({todos:todos});
-    // }
+    TodoActions.addItem(this.state.todos.newTodo);
   }
 
   deleteItem = (event) => {
@@ -57,19 +48,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="tc">
-        <h1 className="f1 f1-l fw2 tc fl w-100 lh-title dib">Your's todo list</h1>
-        <Add
-          addItem={this.addItem}
-          handleEnter={this.handleEnter}
-          onTextChange={this.onTextChange}
-        />
-        <TodoList
-          deleteItem={this.deleteItem}
-          items={this.state.todos}
-        />
+        <div className="tc">
+          <h1 className="f1 f1-l fw2 tc fl w-100 lh-title dib">Your's todo list</h1>
+          <Add
+            addItem={this.addItem}
+            handleEnter={this.handleEnter}
+            onTextChange={this.onTextChange}
+          />
+          <TodoList
+            deleteItem={this.deleteItem}
+            items={this.state.todos.actual}
+          />
 
-      </div>
+        </div>
     )
   }
 }

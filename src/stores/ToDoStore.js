@@ -19,17 +19,17 @@ class TodoStore extends EventEmitter {
   }
 
   deleteItem(id) {
-    this.oldTodos.splice(id, 1);
+    this.todos.actual.splice(id, 1);
     this.emit('change');
   }
 
   addItem(item) {
-    this.oldTodos.push(item)
+    this.todos.actual.push(item)
     this.emit('change');
   }
 
   getAll() {
-    return this.oldTodos
+    return this.todos
   }
 
   handleActions(action) {
