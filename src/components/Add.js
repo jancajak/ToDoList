@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Add = ({ addItem, onTextChange, handleEnter }) => {
+const Add = ({ addItem, onTextChange, handleEnter, input }) => {
   return (
     <div>
       <input onKeyPress={handleEnter} onChange={onTextChange} type='text' placeholder='Type your todos' className='f3 mr2 br4 pa3'/>

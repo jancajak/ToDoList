@@ -24,9 +24,7 @@ class App extends React.Component {
   }
 
   handleEnter = (event) => {
-    if (event.key === 'Enter') {
-      this.addItem();
-    }
+    TodoActions.handleEnter(event.key);
   }
 
   onTextChange = (event) => {
@@ -39,17 +37,12 @@ class App extends React.Component {
 
   deleteItem = (event) => {
     TodoActions.deleteItem(event.target.id);
-
-    // let todos = this.state.todos.slice();
-    // todos.splice(event.target.id, 1);
-    // this.setState({todos: todos})
-
   }
 
   render() {
     return (
         <div className="tc">
-          <h1 className="f1 f1-l fw2 tc fl w-100 lh-title dib">Your's todo list</h1>
+          <h1 className="f1 f1-l fw2 tc fl w-100 lh-title dib">Yours todo list</h1>
           <Add
             addItem={this.addItem}
             handleEnter={this.handleEnter}

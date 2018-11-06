@@ -5,16 +5,14 @@ import dispatcher from '../dispatcher';
 class TodoStore extends EventEmitter {
   constructor() {
     super();
-    this.oldTodos = [];
-    this.oldNewTodo = '';
     this.todos = {
       actual: [],
-      newTodo: ''
+      newTodo: '',
+      defaultValue: ''
     };
   }
 
   onTextChange(text) {
-    this.oldNewTodo = text;
     this.todos.newTodo = text;
   }
 
@@ -28,6 +26,13 @@ class TodoStore extends EventEmitter {
     this.emit('change');
   }
 
+  handleEnter(key) {
+    if(key === 'Enter') {
+      this.todos.actual.push(this.todos.newTodo);
+      this.emit('change');
+    }
+  }
+
   getAll() {
     return this.todos
   }
@@ -35,13 +40,16 @@ class TodoStore extends EventEmitter {
   handleActions(action) {
     switch (action.type) {
       case 'ADD_ITEM':
-        this.addItem(action.item)
+        this.addItem(action.item);
         break;
       case 'DELETE_ITEM':
-        this.deleteItem(action.id)
+        this.deleteItem(action.id);
         break;
       case 'TEXT_CHANGE':
-        this.onTextChange(action.event)
+        this.onTextChange(action.event);
+        break;
+      case 'HANDLE_ENTER':
+        this.handleEnter(action.event);
         break;
       default: {
         console.log('Error');
